@@ -1,0 +1,8 @@
+.dashboardCardWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-table {
+  display: flex;
+}
