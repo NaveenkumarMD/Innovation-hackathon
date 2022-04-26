@@ -95,6 +95,7 @@
     width: 100px;
     text-align: center;
     color: white;
+    cursor: pointer;
 }
 .link>Link{
     text-decoration: none;
