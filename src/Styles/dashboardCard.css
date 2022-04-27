@@ -1,8 +1,29 @@
 .dashboardCardWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  min-height: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 22px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1em 4em;
 }
 
 .content-table {
   display: flex;
+}
+
+.col {
+  padding: 0 2em 2em;
+}
+
+.seeAll {
+  color: #2766f1;
+  text-decoration: none;
 }

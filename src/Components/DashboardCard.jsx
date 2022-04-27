@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../Styles/dashboardCard.css";
 
@@ -26,26 +27,42 @@ const Dashboardcard = () => {
   };
 
   return (
-    <div className="dashboardCardWrapper">
-      <div className="header">
-        <h4>{testData.tableTitle}</h4>
-      </div>
-      <div className="content-table">
-        <div className="col-one">
-          <p>{testData.tableCols[0]}</p>
-          {testData.tableData.map((data) => {
-            <p>{data.DocId}</p>;
-          })}
+    <div
+      className="wrapper"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1em",
+      }}
+    >
+      <div className="dashboardCardWrapper">
+        <div className="header">
+          <h4>{testData.tableTitle}</h4>
         </div>
-        <div className="col-two">
-          <p>{testData.tableCols[1]}</p>
-          {testData.tableData.map((data) => {
-            <p>{data.SubmittedBy}</p>;
-          })}
+        <div className="content-table">
+          <div className="col-one col">
+            <p className="col-title">{testData.tableCols[0]}</p>
+            {testData.tableData.map((data) => {
+              return <p classname="row">{data[testData.tableCols[0]]}</p>;
+            })}
+          </div>
+          <div className="col-two col">
+            <p className="col-title">{testData.tableCols[1]}</p>
+            {testData.tableData.map((data) => {
+              return <p classname="row">{data[testData.tableCols[1]]}</p>;
+            })}
+          </div>
+          <div className="col-three col">
+            <p className="col-title"> {testData.tableCols[2]}</p>
+            {testData.tableData.map((data) => {
+              return <p classname="row">{data[testData.tableCols[2]]}</p>;
+            })}
+          </div>
         </div>
-        <div className="col-three">
-          <p>{testData.tableCols[2]}</p>
-        </div>
+        <Link to="#" className="seeAll">
+          See All Documents
+        </Link>
       </div>
     </div>
   );
