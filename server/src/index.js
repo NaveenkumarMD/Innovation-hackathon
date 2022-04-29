@@ -2,10 +2,17 @@ import SignPDF from "./SignPDF";
 import fs from "node:fs";
 import path from "node:path";
 import express from "express";
-import cors from 'cors'
+const cors=require("cors")
 import request from 'request-promise-native'
 import sendmail from "./Mailing/setup";
-
+const UUID = require("uuid-v4");
+var admin = require("firebase-admin");
+const { getStorage } = require('firebase-admin/storage');
+var serviceAccount = require("./config.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: 'gs://archive-39cf2.appspot.com'
+});
 
 async function Sign() {
   const pdfBuffer = new SignPDF(
@@ -40,11 +47,26 @@ app.post("/", async (req, res) => {
   
   const { url} = req.body
   await downloadpdf(url)
+  let uuid=UUID()
   console.log("File has been signed")
-  var data = fs.readFileSync('get_pdf_signed.pdf');
-  res.contentType("application/pdf");
-  console.log("File has been sent")
-  res.send(data);
+  var bucket = admin.storage().bucket();
+  let randomfilename=Math.random().toString(36).substring(7)
+
+  bucket.upload('./get_pdf_signed.pdf',{
+    destination:`signed/${randomfilename}.pdf`,
+    metadata: {
+      metadata: {
+        firebaseStorageDownloadTokens: uuid
+      }
+    }
+  }
+  )
+  .then((data)=>{
+    let file = data[0];
+    res.json({
+      filename:"https://firebasestorage.googleapis.com/v0/b/" + bucket.name + "/o/" + encodeURIComponent(file.name) + "?alt=media&token=" + uuid
+    })
+  })
 })
 
 
