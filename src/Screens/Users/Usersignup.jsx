@@ -29,6 +29,7 @@ function Usersignup() {
           country: country,
         });
         navigate("/user/dashboard");
+        localStorage.setItem("email", email);
       } catch (e) {
         alert("Something went wrong");
         console.error("Error adding document: ", e);
