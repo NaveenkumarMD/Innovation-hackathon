@@ -3,6 +3,10 @@ import '../../Styles/signup.css'
 import SVG from '../../Images/login.svg'
 import Button from '../../Components/Button'
 import { Link } from 'react-router-dom'
+import {db} from '../../firebase'
+import { collection, addDoc } from "firebase/firestore"; 
+
+
 function Usersignup() {
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
@@ -10,10 +14,25 @@ function Usersignup() {
     const [confirmpassword, setconfirmpassword] = useState('')
     const [phone, setphone] = useState('')
     const [country, setcountry] = useState('')
-    const submit = () => {
+    const submit = async() => {
         alert("sone")
-        if (password !== confirmpassword) {
+        if (password && password !== confirmpassword) {
             return alert("Password not matched")
+        }else{
+            try {
+                const docRef = await addDoc(collection(db, "users"), {
+                    name:name,
+                    email:email,
+                    password:password,
+                    phone:phone,
+                    country:country
+                });
+                console.log("Document written with ID: ", docRef.id);
+              } catch (e) {
+                console.error("Error adding document: ", e);
+              }
+              
+            
         }
 
     }

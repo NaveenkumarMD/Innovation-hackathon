@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from '../../Components/Navbar'
 
 function Createnew() {
@@ -12,50 +12,59 @@ function Createnew() {
 	})
 
 	const handleChange = (e) => {
-		console.log(e)
-		e.preventDefault()
-		setDocData({...docData, [e.target.name]: e.target.value})
+		if(e.target.name === 'docFile')
+			setDocData({...docData, [e.target.name]: e.target.files[0]})
+		else
+			setDocData({...docData, [e.target.name]: e.target.value})
 	}
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+
+	}
+
+	useEffect(()=>{
+		console.log(docData)
+	}, [docData])
 
     return (
         <div>
             <Navbar logged="true"/>
-            <form id="form">
+            <div id="form">
         <h1>NEW DOCUMENT</h1>
 		<div class="form-control">
 			<label for="name" id="name">Name</label>
-			<input type="text" name="name" id="name" placeholder="Enter the document name" />
+			<input type="text" name="name" id="name" onChange={handleChange} placeholder="Enter the document name" />
 		</div>
 
 		<div class="form-control">
 			<label for="description" id="des">Description</label>
-			<textarea type="text" name="description" id="des" placeholder="Enter the description"></textarea>
+			<input type="text" name="description" onChange={handleChange} id="des" placeholder="Enter the description"></input>
 		</div>
 
 		<div class="form-control">
 			<label for="id" id="id" >ID</label>
-			<input type="text" id="id" name="docId" placeholder="Enter your Document id" />
+			<input type="text" id="id" name="docId" placeholder="Enter your Document id" onChange={handleChange}/>
 		</div>
 
 		<div class="form-control">
 			<label for="type" id="type">Document Type</label>
-			<select name="docType" id="type">
+			<select name="docType" id="type" onChange={handleChange}>
                 <option  value="-1"  selected>Type</option>
 				<option value="pdf">pdf</option>
 				<option value="word">word</option>
-				<option value=" "> </option>
-				<option value="other"> </option>
+				<option value="image">image </option>
+				<option value="other">other </option>
 			</select>
 		</div>
 		<div class="form-control">
 			<label for="docFile">Upload</label>
-			<input type="file" id="myfile" name="docFile" on/>
+			<input type="file" id="myfile" name="docFile" onChange={handleChange}/>
 		</div>
         <div class="btn">
             <button type="submit" value="submit" class="align" onClick={handleSubmit}>Submit</button>
         </div>
-		
-	</form>
+		</div>
         </div>
     )
 }
