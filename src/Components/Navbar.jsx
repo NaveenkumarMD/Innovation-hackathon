@@ -11,6 +11,9 @@ function Navbar({ logged = false, sign = false, handlesign = () => { } }) {
         console.log("Clicked in navbar")
           handlesign()
     }
+    const profileclick=()=>{
+        navigate("/profile")
+    }
     return (
         <div className='navbar'>
             <div className='logo' style={{ color: "#2766F1", fontSize: "30px" }}>
@@ -23,8 +26,8 @@ function Navbar({ logged = false, sign = false, handlesign = () => { } }) {
                         <IoIosNotifications size={30} color="#CCCCCC" onClick={notificationsclick} />
                         {/* <span>Notifications</span> */}
                     </div>
-                    <div className="navbar-item">
-                        <IoMdContact size={30} color="#CCCCCC" />
+                    <div className="navbar-item" >
+                        <IoMdContact size={30} color="#CCCCCC" onClick={profileclick} />
                         {/* <span>Profile</span> */}
                     </div>
                     {

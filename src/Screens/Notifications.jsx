@@ -35,7 +35,7 @@ const Success = () => {
                 </div>
             </div>
             <div className='ntext'>
-                Your order has been placed successfully.
+                Your permission letter has been signed successfully.
             </div>
             </div>
             <div className='nclose'>
@@ -54,7 +54,7 @@ const Failure = () => {
                 </div>
             </div>
             <div className='ntext'>
-                Your order has been placed successfully.
+                Your leave letter has been rejected.
             </div>
             </div>
             <div className='nclose'>
@@ -73,7 +73,7 @@ const Info = () => {
                 </div>
             </div>
             <div className='ntext'>
-                Your order has been placed successfully.
+                Your permission letter has been opened by the manager
             </div>
             </div>
             <div className='nclose'>

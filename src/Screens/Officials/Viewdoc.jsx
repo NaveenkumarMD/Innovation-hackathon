@@ -5,11 +5,6 @@ import { ref, uploadBytes, uploadString } from "firebase/storage"
 import { storage } from "../../firebase";
 
 function Viewdoc() {
-    function blobToFile(blob, fileName) {
-        blob.lastModifiedDate = new Date();
-        blob.name = fileName;
-        return blob;
-    }
     const handlesign = () => {
         console.log("Sent to sign");
 
