@@ -6,7 +6,7 @@ import Navbar from "../../Components/Navbar";
 function Dashboard() {
   return (
     <div>
-      <Navbar />
+      <Navbar logged={true} />
       <Dashboardcard />
     </div>
   );

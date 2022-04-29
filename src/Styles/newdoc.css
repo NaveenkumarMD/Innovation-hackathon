@@ -1,0 +1,70 @@
+body {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: black;
+}
+form {
+    background-color: #fff;
+    width: 700px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    
+}
+h1{
+    color: #2766f1;
+}
+.form-control {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 10px;
+}
+.form-control input,
+.form-control select,
+.form-control textarea, 
+.form-control text{
+    border: 1px solid #777;
+    border-radius: 2px;
+    padding: 10px;
+    display: block;
+    width: 95%;
+    height: 30px;
+}
+.form-control select{
+    height: 40px;
+    width: 98%;
+}
+.form-control textarea {
+    height: 60px;
+
+}
+button{
+    background-color: #2766f1;
+    border-radius: 7px;
+    display: block;
+    width: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 490px;
+    height: 40px;
+}
+.align{
+    
+    width: 200px;
+    height: 50px;
+    left: 268px;
+    top: 973px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    color: #FFFFFF;
+
+}

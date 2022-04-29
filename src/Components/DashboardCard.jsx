@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "../Styles/dashboardCard.css";
-
+import { MdExpandMore } from 'react-icons/md'
 const Dashboardcard = () => {
   const testData = {
     tableTitle: "Submitted Documents",
@@ -27,42 +27,100 @@ const Dashboardcard = () => {
   };
 
   return (
-    <div
-      className="wrapper"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "1em",
-      }}
-    >
-      <div className="dashboardCardWrapper">
-        <div className="header">
-          <h4>{testData.tableTitle}</h4>
+
+    <div className="qcontainer">
+      <div className="qtitle">
+        Recieved documents
+      </div>
+      <div className="qcontent">
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
         </div>
-        <div className="content-table">
-          <div className="col-one col">
-            <p className="col-title">{testData.tableCols[0]}</p>
-            {testData.tableData.map((data) => {
-              return <p classname="row">{data[testData.tableCols[0]]}</p>;
-            })}
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
           </div>
-          <div className="col-two col">
-            <p className="col-title">{testData.tableCols[1]}</p>
-            {testData.tableData.map((data) => {
-              return <p classname="row">{data[testData.tableCols[1]]}</p>;
-            })}
-          </div>
-          <div className="col-three col">
-            <p className="col-title"> {testData.tableCols[2]}</p>
-            {testData.tableData.map((data) => {
-              return <p classname="row">{data[testData.tableCols[2]]}</p>;
-            })}
-          </div>
+          <div className="qbutton">View</div>
         </div>
-        <Link to="#" className="seeAll">
-          See All Documents
-        </Link>
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qmore">
+          More
+          <MdExpandMore size={24} color="#555" />
+        </div>
+
+      </div>
+      <div className="qtitle">
+        Signed documents
+      </div>
+      <div className="qcontent">
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qmore">
+          More
+          <MdExpandMore size={24} color="#555" />
+        </div>
+
+      </div>
+      <div className="qtitle">
+        Signed documents
+      </div>
+      <div className="qcontent">
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qcard">
+          <div className="qleft">
+            <div>1.</div>
+            <div>Naveenkumar</div>
+          </div>
+          <div className="qbutton">View</div>
+        </div>
+        <div className="qmore">
+          More
+          <MdExpandMore size={24} color="#555" />
+        </div>
+
       </div>
     </div>
   );

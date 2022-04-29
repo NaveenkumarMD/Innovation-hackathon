@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import '../../Styles/signup.css'
-import SVG from '../../Icons/login.svg'
+import SVG from '../../Images/login.svg'
 import Button from '../../Components/Button'
 import { Link } from 'react-router-dom'
 function Officiallogin() {
