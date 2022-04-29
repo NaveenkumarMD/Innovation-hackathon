@@ -33,27 +33,9 @@ const Dashboardcard = () => {
         Recieved documents
       </div>
       <div className="qcontent">
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
+        <Card name="Document 1" sno="1" />
+        <Card name="Document 2" sno="2" />
+        <Card name="Document 3" sno="3" />
         <div className="qmore">
           More
           <MdExpandMore size={24} color="#555" />
@@ -64,27 +46,9 @@ const Dashboardcard = () => {
         Signed documents
       </div>
       <div className="qcontent">
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
+        <Card name="Document 1" sno="1" />
+        <Card name="Document 2" sno="2" />
+        <Card name="Document 3" sno="3" />
         <div className="qmore">
           More
           <MdExpandMore size={24} color="#555" />
@@ -92,30 +56,13 @@ const Dashboardcard = () => {
 
       </div>
       <div className="qtitle">
-        Signed documents
+        Rejected documents
       </div>
       <div className="qcontent">
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
-        <div className="qcard">
-          <div className="qleft">
-            <div>1.</div>
-            <div>Naveenkumar</div>
-          </div>
-          <div className="qbutton">View</div>
-        </div>
+      <Card sno={1} name="Documentx"/>
+      <Card sno={2} name="Documentx"/>
+      <Card sno={3} name="Documentx"/>
+   
         <div className="qmore">
           More
           <MdExpandMore size={24} color="#555" />
@@ -127,3 +74,15 @@ const Dashboardcard = () => {
 };
 
 export default Dashboardcard;
+
+const Card = ({name,sno}) => {
+  return (
+    <div className="qcard">
+      <div className="qleft">
+        <div>{sno}.</div>
+        <div>{name}</div>
+      </div>
+      <div className="qbutton">View</div>
+    </div>
+  )
+}
