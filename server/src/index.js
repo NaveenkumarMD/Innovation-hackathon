@@ -4,7 +4,8 @@ import path from "node:path";
 import express from "express";
 import cors from 'cors'
 import request from 'request-promise-native'
-import { sign } from "node:crypto";
+import sendmail from "./Mailing/setup";
+
 
 async function Sign() {
   const pdfBuffer = new SignPDF(
@@ -13,8 +14,8 @@ async function Sign() {
   );
 
   const signedDocs = await pdfBuffer.signPDF();
-  const randomNumber = Math.floor(Math.random() * 5000);
-  const pdfName = `./exports/exported_file_${randomNumber}.pdf`;
+
+  const pdfName = `./get_pdf_signed.pdf`;
 
   fs.writeFileSync(pdfName, signedDocs);
   console.log(`New Signed PDF created called: ${pdfName}`);
@@ -22,27 +23,48 @@ async function Sign() {
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
-const downloadpdf = async (outputfilename = null) => {
+const downloadpdf = async (url, outputfilename = null) => {
   let pdfbuffer = await request.get({
-    uri: "https://firebasestorage.googleapis.com/v0/b/archive-39cf2.appspot.com/o/19CS097%20NAVEENKUMAR%20M%20-%20Experiment%20No%20_%209%20%20%20%20%20%20%20%20%20%20Page%20replacement%20policy%20(1).pdf?alt=media&token=6333cd95-ad6a-43a7-be57-68a67ef09278"
+    uri: url
     , encoding: null
   })
   let outputFilename = "get_pdf.pdf"
   console.log("Writing downloaded PDF file to " + outputFilename + "...");
   fs.writeFileSync(outputFilename, pdfbuffer);
-  Sign()
+  await Sign()
 }
 
-app.get("/", async (req, res) => {
-  // await downloadpdf()
-  var data =fs.readFileSync('get_pdf.pdf');
+app.post("/", async (req, res) => {
+  
+  const { url} = req.body
+  await downloadpdf(url)
+  console.log("File has been signed")
+  var data = fs.readFileSync('get_pdf_signed.pdf');
   res.contentType("application/pdf");
+  console.log("File has been sent")
   res.send(data);
-
 })
 
-app.listen(4000,()=>{
+
+app.post("/sendmail",(req,res)=>{
+  const {to,subject,body} = req.body
+  const details={
+    to,
+    subject,
+    body
+  }
+  sendmail(details).then(res=>{
+    return res.status(200).send("Mail sent")
+  }).catch(err=>{
+    return res.status(500).send(err)
+  })
+})
+
+
+
+app.listen(4000, () => {
   console.log("Server is running on port 4000")
 })
 
