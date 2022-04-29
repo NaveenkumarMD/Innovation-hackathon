@@ -9,7 +9,9 @@ import Viewdoc from "./Screens/Officials/Viewdoc";
 import Createnew from "./Screens/Users/Createnew";
 import UserDashboard from "./Screens/Users/UserDashboard";
 import Userlogin from "./Screens/Users/Userlogin";
+import Profile from "./Screens/Profile"
 import Usersignup from "./Screens/Users/Usersignup";
+
 
 const App = () => {
   return (
@@ -26,6 +28,7 @@ const App = () => {
           <Route path="/notifications" exact element={<Notifications/>}/>
           <Route path="/user/createnew" exact element={<Createnew />}/>
           <Route path="/officer/viewdoc" exact element={<Viewdoc/>}/>
+          <Route path="/profile" exact element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </div>
