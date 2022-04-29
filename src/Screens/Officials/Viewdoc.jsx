@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Document, Page, setPageNumber } from 'react-pdf'
-import Navbar from '../../Components/Navbar'
+import React, { useState } from "react";
+import { Document, Page, setPageNumber } from "react-pdf";
+import Navbar from "../../Components/Navbar";
 function Viewdoc() {
     const handlesign=()=>{
         
@@ -16,4 +16,4 @@ function Viewdoc() {
     )
 }
 
-export default Viewdoc
+export default Viewdoc;

@@ -16,6 +16,7 @@ function Userlogin() {
     try {
       const userData = await getDoc(doc(db, "users", email));
       if (userData.exists() && userData.data().password === password) {
+        localStorage.setItem("email", email);
         navigate("/user/dashboard");
       } else {
         alert("Email/Password is wrong");
