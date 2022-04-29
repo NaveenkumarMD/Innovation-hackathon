@@ -1,109 +1,85 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../../Components/Navbar";
+import React, { useState, useEffect } from 'react'
+import Navbar from '../../Components/Navbar'
 
 function Createnew() {
-  const [docData, setDocData] = useState({
-    name: "",
-    description: "",
-    docId: "",
-    docType: "",
-    docFile: "",
-  });
 
-  const handleChange = (e) => {
-    if (e.target.name === "docFile")
-      setDocData({ ...docData, [e.target.name]: e.target.files[0] });
-    else setDocData({ ...docData, [e.target.name]: e.target.value });
-  };
+    const [docData, setDocData] = useState({
+        name: '',
+        description: "",
+        docId: "",
+        docType: '',
+        docFile: ''
+    })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    const handleChange = (e) => {
+        if (e.target.name === 'docFile')
+            setDocData({ ...docData, [e.target.name]: e.target.files[0] })
+        else
+            setDocData({ ...docData, [e.target.name]: e.target.value })
+    }
 
-  useEffect(() => {
-    console.log(docData);
-  }, [docData]);
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-  return (
-    <div>
-      <Navbar logged="true" />
-      <div id="form">
-        <h1>NEW DOCUMENT</h1>
-        <div class="form-control">
-          <label for="name" id="name">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={handleChange}
-            placeholder="Enter the document name"
-          />
+    }
+
+    useEffect(() => {
+        console.log(docData)
+    }, [docData])
+
+    return (
+        <div>
+            <Navbar logged="true" />
+            <div id="form" className='vform'>
+                <h1 className='vtitle'>New Document</h1>
+                <div className='vcontainer'>
+                    <div className="vs" ></div>
+                    <div class="form-control">
+                        <label for="name" id="name" className='label vc'>Name</label><br />
+                        <input type="text" name="name" id="name" className='input vd' onChange={handleChange} placeholder="Enter the document name" />
+                    </div>
+                    <div className="vs"></div>
+                    <div class="form-control">
+                        <label for="description" className='label vc' id="des">Description</label><br />
+                        <input type="text" name="description" className='input vd' onChange={handleChange} id="des" placeholder="Enter the description"></input>
+                    </div>
+                    <div className="vs"></div>
+                    <div class="form-control">
+                        <label for="id" id="id" className='label vc' >ID</label><br />
+                        <input type="text" id="id" name="docId" className='input vd' placeholder="Enter your Document id" onChange={handleChange} />
+                    </div>
+                    <div className="vs"></div>
+                    <div class="form-control">
+                        <label for="type" className='label vc' id="type">Document Type</label><br />
+                        <select name="docType" id="type" className='input vd' onChange={handleChange}>
+                            <option value="-1" selected>Type</option>
+                            <option value="pdf">pdf</option>
+                            <option value="word">word</option>
+                            <option value="image">image </option>
+                            <option value="other">other </option>
+                        </select>
+                    </div>
+                    <div className="vs"></div>
+                    <div class="form-control">
+                        <label for="docFile" className='label vc'>Upload</label><br />
+                        <input type="file" className='input vd' id="myfile" name="docFile" onChange={handleChange} />
+                    </div>
+                    <div className="vs"></div>
+                    <div style={{ 
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+
+                     }}>
+                        <div class="btn" onClick={handleSubmit}>
+                            Submit
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="form-control">
-          <label for="description" id="des">
-            Description
-          </label>
-          <input
-            type="text"
-            name="description"
-            onChange={handleChange}
-            id="des"
-            placeholder="Enter the description"
-          ></input>
-        </div>
-
-        <div class="form-control">
-          <label for="id" id="id">
-            ID
-          </label>
-          <input
-            type="text"
-            id="id"
-            name="docId"
-            placeholder="Enter your Document id"
-            onChange={handleChange}
-          />
-        </div>
-
-        <div class="form-control">
-          <label for="type" id="type">
-            Document Type
-          </label>
-          <select name="docType" id="type" onChange={handleChange}>
-            <option value="-1" selected>
-              Type
-            </option>
-            <option value="pdf">pdf</option>
-            <option value="word">word</option>
-            <option value="image">image </option>
-            <option value="other">other </option>
-          </select>
-        </div>
-        <div class="form-control">
-          <label for="docFile">Upload</label>
-          <input
-            type="file"
-            id="myfile"
-            name="docFile"
-            onChange={handleChange}
-          />
-        </div>
-        <div class="btn">
-          <button
-            type="submit"
-            value="submit"
-            class="align"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    )
 }
 
-export default Createnew;
+export default Createnew
