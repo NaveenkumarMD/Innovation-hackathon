@@ -2,7 +2,7 @@ import React from 'react'
 import '../Styles/navbar.css'
 import { IoIosNotifications, IoMdContact } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
-function Navbar({logged=false}) {
+function Navbar({logged=false,sign=false}) {
     const navigate=useNavigate()
     const notificationsclick=()=>{
         navigate("/notifications")
@@ -22,6 +22,9 @@ function Navbar({logged=false}) {
                     <div className="navbar-item">
                         <IoMdContact size={30} color="#CCCCCC" />
                         {/* <span>Profile</span> */}
+                    </div>
+                    <div className='navbar-item sign-button'>
+                        Sign Doc
                     </div>
                 </div>
             }
