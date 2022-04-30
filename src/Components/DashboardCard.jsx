@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { getDoc, doc } from "firebase/firestore";
 import "../Styles/dashboardCard.css";
@@ -10,6 +10,7 @@ const Dashboardcard = () => {
   const [signedDocs, setSignedDocs] = useState([]);
   const [rejectedDocs, setRejectedDocs] = useState([]);
   let docDetails;
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -50,7 +51,9 @@ const Dashboardcard = () => {
         <div className="qcontent">
           {receivedDocs.map(
             (doc, index) =>
-              index < 3 && <Card name={doc.name} sno={doc.docId} />
+              index < 3 && (
+                <Card name={doc.name} sno={doc.docId} docLink={doc.docLink} />
+              )
           )}
           <div className="qmore">
             More
@@ -66,7 +69,9 @@ const Dashboardcard = () => {
         <div className="qcontent">
           {signedDocs.map(
             (doc, index) =>
-              index < 3 && <Card name={doc.name} sno={doc.docId} />
+              index < 3 && (
+                <Card name={doc.name} sno={doc.docId} docLink={doc.docLink} />
+              )
           )}
 
           <div className="qmore">
@@ -83,7 +88,9 @@ const Dashboardcard = () => {
         <div className="qcontent">
           {rejectedDocs.map(
             (doc, index) =>
-              index < 3 && <Card name={doc.name} sno={doc.docId} />
+              index < 3 && (
+                <Card name={doc.name} sno={doc.docId} docLink={doc.docLink} />
+              )
           )}
 
           <div className="qmore">
@@ -101,14 +108,16 @@ const Dashboardcard = () => {
 
 export default Dashboardcard;
 
-const Card = ({ name, sno }) => {
+const Card = ({ name, sno, docLink }) => {
   return (
     <div className="qcard">
       <div className="qleft">
         <div>{sno}.</div>
         <div>{name}</div>
       </div>
-      <div className="qbutton">View</div>
+      <Link className="qbutton" to="/officer/viewdoc" state={docLink}>
+        View
+      </Link>
     </div>
   );
 };
